@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8f16908-e1e9-448f-849b-d65938865b3d" name="Changes" comment="" />
+    <list default="true" id="f8f16908-e1e9-448f-849b-d65938865b3d" name="Changes" comment="0. Техническое задание. Агрегатор Java Вакансий. [#260357 #320076]">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +38,14 @@
       <option name="presentableId" value="Default" />
       <updated>1657540420630</updated>
     </task>
+    <task id="LOCAL-00001" summary="0. Техническое задание. Агрегатор Java Вакансий. [#260357 #320076]">
+      <created>1657542383396</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657542383397</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -44,5 +58,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="0. Техническое задание. Агрегатор Java Вакансий. [#260357 #320076]" />
+    <option name="LAST_COMMIT_MESSAGE" value="0. Техническое задание. Агрегатор Java Вакансий. [#260357 #320076]" />
   </component>
 </project>
