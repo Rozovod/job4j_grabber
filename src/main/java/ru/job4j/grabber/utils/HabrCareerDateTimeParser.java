@@ -1,11 +1,12 @@
 package ru.job4j.grabber.utils;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class HabrCareerDateTimeParser implements DateTimeParser {
     @Override
     public LocalDateTime parse(String parse) {
-        String[] str = parse.split("\\+", 2);
-        return LocalDateTime.parse(str[0]);
+        ZonedDateTime dateTime = ZonedDateTime.parse(parse);
+        return dateTime.toLocalDateTime();
     }
 }
