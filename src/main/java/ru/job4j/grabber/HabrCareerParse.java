@@ -40,7 +40,7 @@ public class HabrCareerParse implements Parse {
     public List<Post> list(String link) throws IOException {
         List<Post> posts = new ArrayList<>();
         for (int i = 1; i < 6; i++) {
-            String pageNumb = String.format("%s?page=%s", PAGE_LINK, i);
+            String pageNumb = String.format("%s?page=%s", link, i);
             Connection connection = Jsoup.connect(pageNumb);
             Document document = connection.get();
             Elements rows = document.select(".vacancy-card__inner");
