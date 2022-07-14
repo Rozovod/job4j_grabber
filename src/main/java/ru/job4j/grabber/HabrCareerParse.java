@@ -24,9 +24,7 @@ public class HabrCareerParse implements Parse {
     private String retrieveDescription(String link) throws IOException {
         Connection connection = Jsoup.connect(link);
         Document document = connection.get();
-        Elements descriptions = document.select(".vacancy-description__text");
-        Element descriptionElement = descriptions.select(".style-ugc").first();
-        return descriptionElement.text();
+        return document.selectFirst(".style-ugc").text();
     }
 
     public static void main(String[] args) throws IOException {
@@ -42,7 +40,7 @@ public class HabrCareerParse implements Parse {
     public List<Post> list(String link) throws IOException {
         List<Post> posts = new ArrayList<>();
         for (int i = 1; i < 6; i++) {
-            String pageNumb = String.format("%s?page=%s", link, i);
+            String pageNumb = String.format("%s?page=%s", PAGE_LINK, i);
             Connection connection = Jsoup.connect(pageNumb);
             Document document = connection.get();
             Elements rows = document.select(".vacancy-card__inner");
