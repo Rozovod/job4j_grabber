@@ -16,7 +16,7 @@ public class HabrCareerParse implements Parse {
     private static final String SOURCE_LINK = "https://career.habr.com";
     private static final String PAGE_LINK = String.format("%s/vacancies/java_developer", SOURCE_LINK);
     private final DateTimeParser dateTimeParser;
-    private static final int countPage = 5;
+    private static final int COUNT_PAGE = 5;
 
     public HabrCareerParse(DateTimeParser dateTimeParser) {
         this.dateTimeParser = dateTimeParser;
@@ -58,7 +58,7 @@ public class HabrCareerParse implements Parse {
     @Override
     public List<Post> list(String link) {
         List<Post> posts = new ArrayList<>();
-        for (int i = 1; i <= countPage; i++) {
+        for (int i = 1; i <= COUNT_PAGE; i++) {
             String pageNumb = String.format("%s?page=%s", link, i);
             Connection connection = Jsoup.connect(pageNumb);
             try {
