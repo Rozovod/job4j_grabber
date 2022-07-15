@@ -69,7 +69,7 @@ public class PsqlStore implements  Store, AutoCloseable {
         try (PreparedStatement st = cnn.prepareStatement("select * from post where id = ?")) {
             st.setInt(1, id);
             try (ResultSet rsl = st.executeQuery()) {
-                while (rsl.next()) {
+                if (rsl.next()) {
                     post = returnPostFromDB(rsl);
                 }
             }
@@ -111,21 +111,22 @@ public class PsqlStore implements  Store, AutoCloseable {
         try (InputStream in = PsqlStore.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties cfg = new Properties();
             cfg.load(in);
-            PsqlStore store = new PsqlStore(cfg);
-            Post postFirst = new Post(
-                    "testTitle1", "testLink1", "testDescription1", LocalDateTime.now());
-            Post postSecond = new Post(
-                    "testTitle2", "testLink2", "testDescription2", LocalDateTime.now());
-            store.createTable("./data/grabber.sql");
-            store.save(postFirst);
-            store.save(postSecond);
-            System.out.println("posts saved");
-            System.out.println("next method");
-            List<Post> posts = store.getAll();
-            posts.forEach(System.out::println);
-            System.out.println("next method");
-            System.out.println(store.findById(1));
-        } catch (IOException e) {
+            try (PsqlStore store = new PsqlStore(cfg)) {
+                Post postFirst = new Post(
+                        "testTitle1", "testLink1", "testDescription1", LocalDateTime.now());
+                Post postSecond = new Post(
+                        "testTitle2", "testLink2", "testDescription2", LocalDateTime.now());
+                store.createTable("./data/grabber.sql");
+                store.save(postFirst);
+                store.save(postSecond);
+                System.out.println("posts saved");
+                System.out.println("next method");
+                List<Post> posts = store.getAll();
+                posts.forEach(System.out::println);
+                System.out.println("next method");
+                System.out.println(store.findById(1));
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
