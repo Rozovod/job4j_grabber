@@ -2,9 +2,7 @@ package ru.job4j.grabber;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,11 +29,11 @@ public class PsqlStore implements  Store, AutoCloseable {
     @Override
     public void save(Post post) {
         try (PreparedStatement st = cnn.prepareStatement(
-                "insert into post(name, text, link, created) values(?, ?, ?, ?) on conflict (link) do nothing",
+                "insert into post(name, link, text, created) values(?, ?, ?, ?) on conflict (link) do nothing",
                 Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, post.getTitle());
-            st.setString(2, post.getDescription());
-            st.setString(3, post.getLink());
+            st.setString(2, post.getLink());
+            st.setString(3, post.getDescription());
             st.setTimestamp(4, Timestamp.valueOf(post.getCreated()));
             st.execute();
             try (ResultSet genKeys = st.getGeneratedKeys()) {
@@ -83,8 +81,8 @@ public class PsqlStore implements  Store, AutoCloseable {
         return new Post(
                 rsl.getInt("id"),
                 rsl.getString("name"),
-                rsl.getString("text"),
                 rsl.getString("link"),
+                rsl.getString("text"),
                 rsl.getTimestamp("created").toLocalDateTime()
         );
     }
